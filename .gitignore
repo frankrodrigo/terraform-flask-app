@@ -17,7 +17,6 @@ terraform/credentials.json
 
 # Ignore Kubernetes secrets
 k8s/cloudsql-instance-credentials-secret.yaml
-k8s/secrets.yaml
 
 # Ignore Terraform plan file
 terraform/tfplan
