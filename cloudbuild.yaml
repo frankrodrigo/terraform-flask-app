@@ -1,4 +1,5 @@
-logsBucket: gs://my-cloud-build-logs-bucket
+options:
+  logging: NONE
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/terraform-flask-app-443601/backend-app', './backend']
