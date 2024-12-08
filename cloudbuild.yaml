@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/terraform-flask-app-443601/backend-app', './backend']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/terraform-flask-app-443601/backend-app']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/terraform-flask-app-443601/frontend-app', './frontend']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/terraform-flask-app-443601/frontend-app']
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'kubernetes/']
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=flask-cluster'
